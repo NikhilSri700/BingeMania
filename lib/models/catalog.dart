@@ -7,35 +7,44 @@ class CatalogModel {
 class Item {
   final String name;
   final String release;
-  final num rating;
-  static int i = 0;
-  Item(this.name, this.release, this.rating);
+  final String rating;
+  final String image;
+  Item(
+    this.name,
+    this.release,
+    this.rating,
+    this.image,
+  );
 
   Item copyWith({
     String? name,
     String? release,
-    num? rating,
+    String? rating,
+    String? image,
   }) {
     return Item(
       name ?? this.name,
       release ?? this.release,
       rating ?? this.rating,
+      image ?? this.image,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'Title': name,
-      'Release Date': release,
-      'IMDB Rating': rating,
+      'name': name,
+      'release': release,
+      'rating': rating,
+      'image': image,
     };
   }
 
   factory Item.fromMap(Map<String, dynamic> map) {
     return Item(
-      map['Title'].toString(),
-      map['Release Date'],
-      (map['IMDB Rating'] == null ? 0 : map['IMDB Rating']),
+      map['name'],
+      map['release'],
+      map['rating'],
+      map['image'],
     );
   }
 
@@ -45,7 +54,7 @@ class Item {
 
   @override
   String toString() {
-    return 'Item(name: $name, release: $release, rating: $rating)';
+    return 'Item(name: $name, release: $release, rating: $rating, image: $image)';
   }
 
   @override
@@ -55,11 +64,12 @@ class Item {
     return other is Item &&
         other.name == name &&
         other.release == release &&
-        other.rating == rating;
+        other.rating == rating &&
+        other.image == image;
   }
 
   @override
   int get hashCode {
-    return name.hashCode ^ release.hashCode ^ rating.hashCode;
+    return name.hashCode ^ release.hashCode ^ rating.hashCode ^ image.hashCode;
   }
 }

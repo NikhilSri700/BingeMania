@@ -20,9 +20,10 @@ class _HomePageState extends State<HomePage> {
   loadData() async {
     await Future.delayed(Duration(seconds: 2));
     final catalogJson = await rootBundle.loadString("assets/files/movies.json");
-    final decodedData = jsonDecode(catalogJson);
+    final decodedData = jsonDecode(catalogJson)["movies"];
     CatalogModel.items =
         List.from(decodedData).map<Item>((item) => Item.fromMap(item)).toList();
+    setState(() {});
   }
 
   @override
@@ -34,7 +35,7 @@ class _HomePageState extends State<HomePage> {
         drawer: MyDrawer(),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+          child: (CatalogModel.items.isNotEmpty)
               ? ListView.builder(
                   itemCount: CatalogModel.items.length,
                   itemBuilder: (context, index) {

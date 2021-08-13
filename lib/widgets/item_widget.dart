@@ -12,8 +12,7 @@ class ItemWidget extends StatelessWidget {
         onTap: () {
           print("${item.name} pressed");
         },
-        leading: Image.network(
-            "https://media.comicbook.com/files/img/default-movie.png"),
+        leading: Image.network(item.image),
         title: Text(item.name),
         subtitle: Text(item.release),
         trailing: Text(
