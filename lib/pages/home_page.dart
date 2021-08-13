@@ -1,8 +1,7 @@
+import 'package:binge_mania/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final day = 1;
@@ -12,7 +11,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Binge Mania"),
       ),
-      drawer: Drawer(),
+      drawer: MyDrawer(),
       body: Center(
         child: Container(
           child: Text("My First day $day Flutter App by $name"),
