@@ -12,11 +12,12 @@ class ItemWidget extends StatelessWidget {
         onTap: () {
           print("${item.name} pressed");
         },
-        leading: Image.network(item.image),
+        leading: Image.network(
+            "https://media.comicbook.com/files/img/default-movie.png"),
         title: Text(item.name),
-        subtitle: Text(item.desc),
+        subtitle: Text(item.release),
         trailing: Text(
-          "${item.rating}/5",
+          "${item.rating}/10",
           textScaleFactor: 1.2,
           style: TextStyle(
             color: Colors.deepPurple,
